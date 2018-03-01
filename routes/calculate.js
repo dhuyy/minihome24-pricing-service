@@ -7,7 +7,7 @@ router.get('/:code/:price', function(req, res) {
     if (!coupon) {
       res.status(404).send(err);
     } else {
-      var total = (req.params.price * coupon.discount) / 100;
+      var total = (req.params.price - (req.params.price * coupon.discount) / 100);
 
       res.send(JSON.stringify({
         priceWithDiscount: total
